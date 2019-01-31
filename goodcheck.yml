@@ -1,0 +1,14 @@
+rules:
+  - id: com.sideci.company-name
+    pattern:
+      regexp: 株式会社\s*Sider
+    message:
+      Sider株式会社は後株です。前株ではありません。
+      住所や電話番号の調整の時は、このドキュメントを見てください。
+    glob:
+      - "**/*.{html,md,txt}"
+    fail:
+      - 株式会社Sider
+      - 株式会社 Sider
+    pass:
+      - Sider株式会社

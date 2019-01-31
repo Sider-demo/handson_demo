@@ -1,0 +1,15 @@
+rules:
+  - id: com.sider.lock_statement
+    pattern: lock!
+    message: |
+      データベースをロックする際には、タイムアウト時のエラーハンドリングを考慮してください
+
+      ロックが競合すると、タイムアウトに達するとエラーになった例がありました。
+      できるだけ3名以上とレビューをして確認してください。
+      [See] https://__社内用WikiのURL__/障害のレポート/
+    justification:
+      - エラー発生時のハンドリングが既に考慮されている
+      - エラーが発生しても問題が無い
+    examples:
+      - before: lock.lock!
+
